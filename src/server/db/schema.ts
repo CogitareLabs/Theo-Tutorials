@@ -27,10 +27,30 @@ export const posts = createTable(
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
+      () => new Date(),
     ),
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
+);
+
+export const users = createTable(
+  "user",
+  {
+    id: serial("id").primaryKey(),
+    username: varchar("username", { length: 256 }).notNull(),
+    email: varchar("email", { length: 256 }).notNull().unique(),
+    password: varchar("password", { length: 256 }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
+      () => new Date(),
+    ),
+  },
+  (example) => ({
+    usernameIndex: index("username_idx").on(example.username),
+    emailIndex: index("email_idx").on(example.email),
+  }),
 );
