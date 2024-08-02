@@ -20,7 +20,7 @@ export default async function HomePage() {
   return (
     <main>
       <div className="flex flex-wrap gap-4 p-4">
-        {[...mockImages].map((image, index) => (
+        {[...mockImages, ...mockImages, ...mockImages].map((image, index) => (
           <div key={image.id}>
             <Image src={image.url} alt="image" width={200} height={200} />
           </div>
