@@ -1,28 +1,23 @@
 import { getMyImages } from "~/server/queries";
 import Image from "next/image";
-
+export const dynamic = "force-dynamic";
 export default async function HomePage() {
-  const mockUrls = [
-    "https://utfs.io/f/a01c81cd-cbf8-4cdd-bc6b-8d25b02f5b7e-bsk3dw.webp",
-    "https://utfs.io/f/28cfc6b0-ebe1-42ac-95ab-f90b4cecb936-1t6f.svg.png",
-  ];
 
-  const mockImages = mockUrls.map((url, index) => {
-    return {
-      url,
-      id: index,
-    };
-  });
-
-  const posts = await getMyImages();
-  console.log("posts: ", posts);
+  const images = await getMyImages();
+  console.log("images: ", images);
 
   return (
     <main>
       <div className="flex flex-wrap gap-4 p-4">
+<<<<<<< HEAD
         {[...mockImages, ...mockImages, ...mockImages].map((image, index) => (
           <div key={image.id}>
+=======
+        {images.map((image, index) => (
+          <div key={image.id} className="flex flex-col gap-2">
+>>>>>>> 08a3e2a4b1e4aa07ca3c7bb0b556835de8dda21f
             <Image src={image.url} alt="image" width={200} height={200} />
+            <p>{image.name}</p>
           </div>
         ))}
       </div>
