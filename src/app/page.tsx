@@ -17,13 +17,15 @@ export default async function HomePage() {
 
 async function Images() {
   const images = await getMyImages();
-  console.log("images: ", images);
-  return (<div className="flex flex-wrap gap-4 p-4">
-    {images.map((image, index) => (
-      <div key={image.id} className="flex flex-col gap-2">
-        <Image src={image.url} alt="image" width={200} height={200} />
-        <p>{image.name}</p>
-      </div>
-    ))}
-  </div>)
+  // console.log("images: ", images);
+  return (
+    <div className="flex flex-wrap gap-4 p-4">
+      {images.map((image, index) => (
+        <div key={image.id} className="flex flex-col gap-2">
+          <Image src={image.url} alt="image" width={200} height={200} />
+          <p>{image.name}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
