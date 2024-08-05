@@ -21,7 +21,7 @@ export default function RootLayout({
     <ClerkProvider>
       <CSPostHogProvider>
         <html lang="en" className={`${GeistSans.variable}`}>
-          <body className="bg-black text-white">
+          <body className="bg-black text-white dark">
             {/* <Navbar /> */}
             <TopNav />
             {children}
