@@ -21,7 +21,8 @@ export const ourFileRouter = {
 
       // Prevent uploads from users who haven't permission to upload
       const fullUserWithMetadata = await clerkClient.users.getUser(user.userId);
-      if (fullUserWithMetadata?.privateMetadata?.["can-upload"] !== true)
+      console.log("fullUserWithMetadata", fullUserWithMetadata);
+      if (fullUserWithMetadata?.privateMetadata?.["can-upload"] === false)
         throw new UploadThingError("User don't have permission to upload");
 
       // Rate limit uploads
