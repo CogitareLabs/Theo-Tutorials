@@ -19,16 +19,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <CSPostHogProvider>
-        <html lang="en" className={`${GeistSans.variable}`}>
-          <body className="bg-black text-white">
-            {/* <Navbar /> */}
-            <TopNav />
-            {children}
-            <Toaster />
-          </body>
-        </html>
-      </CSPostHogProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body className="bg-black text-white">
+          {/* <Navbar /> */}
+          <TopNav />
+          {children}
+          <Toaster />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
